@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-    const Member = sequelize.define("users", {
-      MemberID: {
+    const User = sequelize.define("user", {
+      userId: {
         type: Sequelize.INTEGER,
         primaryKey: true
       },
@@ -32,5 +32,5 @@ module.exports = (sequelize, Sequelize) => {
       timestamps: false
     } );
   
-    return Member;
+    return user;
   };
