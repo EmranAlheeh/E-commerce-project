@@ -6,14 +6,14 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         primaryKey: true
       },
-      MemberID: {
+      userId: {
         type: Sequelize.INTEGER,
         references: {
           // This is a reference to another model
-          model: 'members',
+          model: 'users',
 
           // This is the column name of the referenced model
-          key: 'MemberID'
+          key: 'userId'
       }
       },
       ProductID: {
