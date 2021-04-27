@@ -1,9 +1,10 @@
 module.exports = (sequelize, Sequelize) => {
-    const Cart = sequelize.define("carts", {
-      CartID: {
+    const Order = sequelize.define("orders", {
+      OrderID: {
         type: Sequelize.INTEGER,
         primaryKey: true
-      },UserID: {
+      },
+      UserID: {
         type: Sequelize.INTEGER,
         references: {
           // This is a reference to another model
@@ -13,18 +14,18 @@ module.exports = (sequelize, Sequelize) => {
           key: 'UserID'
       }
       },
-    
-       
-      SubTotal: {
+      
+      
+      TotalPrice: {
         type: Sequelize.DOUBLE,       
       },
 
-      ShippingPrice: {
-        type: Sequelize.DOUBLE,
+      Quantity: {
+        type: Sequelize.INTEGER,
       },
 
-      TotalPrice: {
-        type: Sequelize.DOUBLE,
+      OrderDate: {
+        type: Sequelize.DATE,
       },
     },{
         timestamps: false
@@ -32,5 +33,5 @@ module.exports = (sequelize, Sequelize) => {
 
       );
      
-    return Cart;
+    return Order;
   };

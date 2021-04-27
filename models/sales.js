@@ -1,36 +1,31 @@
 module.exports = (sequelize, Sequelize) => {
-    const Cart = sequelize.define("carts", {
-      CartID: {
+    const Sale = sequelize.define("sales", {
+      SalesID: {
         type: Sequelize.INTEGER,
         primaryKey: true
-      },UserID: {
+      },
+      ProductID: {
         type: Sequelize.INTEGER,
         references: {
           // This is a reference to another model
-          model: 'users',
+          model: 'products',
 
           // This is the column name of the referenced model
-          key: 'UserID'
+          key: 'ProductID'
       }
       },
-    
-       
-      SubTotal: {
-        type: Sequelize.DOUBLE,       
+      PriceBeforeSale:{
+        type: Sequelize.DOUBLE
       },
+      Discount:{
+        type: Sequelize.DOUBLE
+    },
 
-      ShippingPrice: {
-        type: Sequelize.DOUBLE,
-      },
-
-      TotalPrice: {
-        type: Sequelize.DOUBLE,
-      },
     },{
         timestamps: false
       } 
 
       );
      
-    return Cart;
+    return Sale;
   };

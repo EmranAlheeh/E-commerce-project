@@ -1,30 +1,25 @@
 module.exports = (sequelize, Sequelize) => {
-    const Cart = sequelize.define("carts", {
-      CartID: {
+    const Image = sequelize.define("image", {
+      ImageID: {
         type: Sequelize.INTEGER,
+         
         primaryKey: true
-      },UserID: {
+      },
+      ProductID: {
         type: Sequelize.INTEGER,
         references: {
           // This is a reference to another model
-          model: 'users',
+          model: 'products',
 
           // This is the column name of the referenced model
-          key: 'UserID'
+          key: 'ProductID'
       }
       },
-    
-       
-      SubTotal: {
-        type: Sequelize.DOUBLE,       
+      ImageSource: {
+        type: Sequelize.STRING,
       },
-
-      ShippingPrice: {
-        type: Sequelize.DOUBLE,
-      },
-
-      TotalPrice: {
-        type: Sequelize.DOUBLE,
+      subImagesSource: {
+        type: Sequelize.STRING,
       },
     },{
         timestamps: false
@@ -32,5 +27,5 @@ module.exports = (sequelize, Sequelize) => {
 
       );
      
-    return Cart;
+    return Image;
   };
