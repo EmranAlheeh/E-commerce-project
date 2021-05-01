@@ -1,13 +1,18 @@
 module.exports = (sequelize, Sequelize) => {
     const Details = sequelize.define("ordersDetails", {
-      ProductID: {
+      OrderDeID:{
         type: Sequelize.INTEGER,
+        primaryKey: true
+      },
+      DetailesID: {
+        type: Sequelize.INTEGER,
+
         references: {
           // This is a reference to another model
-          model: 'products',
+          model: 'prouductDetailes',
 
           // This is the column name of the referenced model
-          key: 'ProductID'
+          key: 'DetailesID'
       }
       },SalesID: {
         type: Sequelize.INTEGER,

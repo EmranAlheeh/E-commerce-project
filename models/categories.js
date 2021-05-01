@@ -25,20 +25,4 @@ module.exports = (sequelize, Sequelize) => {
 
 
 
-//   module.exports = (sequelize, Sequelize) => {
-//     const CategoryBrand = sequelize.define("categoryBrands", {
-//         CategoryID: {
-//             type: Sequelize.INTEGER,
-//             references: {
-//               // This is a reference to another model
-//               model: 'carts',
-      
-//               // This is the column name of the referenced model
-//               key: 'CartID'
-//           }
-//           },
-//     },{
-//         timestamps: false
-//       } 
-//       );
-// };
+ 

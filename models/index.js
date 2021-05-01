@@ -28,14 +28,15 @@ db.ordersDetails = require("./ordersDetails.js")(sequelize, Sequelize);
 db.products = require("./products.js")(sequelize, Sequelize); 
 db.sales = require("./sales.js")(sequelize, Sequelize); 
 db.userAddress = require("./userAddress.js")(sequelize, Sequelize); 
-db.users = require("./users.js")(sequelize, Sequelize); 
+db.users = require("./users.js")(sequelize, Sequelize);
+db.prouductDetailes = require("./productDetailes")(sequelize, Sequelize); 
 
 
  
 
  
-db.products.belongsTo(db.carts, { foreignKey: 'CartID' });
-db.carts.hasMany(db.products, { foreignKey: 'CartID' });
+
+
 
 db.orders.belongsTo(db.carts, { foreignKey: 'CartID' });
 db.carts.hasMany(db.orders, { foreignKey: 'CartID' });
@@ -56,11 +57,14 @@ db.users.hasMany(db.userAddress, { foreignKey: 'UserID' });
 db.products.belongsTo(db.categories, { foreignKey: 'CategoryID' });
 db.categories.hasMany(db.products, { foreignKey: 'CategoryID' });
 
-db.ordersDetails.belongsTo(db.products, { foreignKey: 'ProductID' });
-db.products.hasOne(db.ordersDetails, { foreignKey: 'ProductID' });
+db.ordersDetails.belongsTo(db.prouductDetailes, { foreignKey: 'DetailesID' });
+db.prouductDetailes.hasMany(db.ordersDetails, { foreignKey: 'DetailesID' });
+
+db.prouductDetailes.belongsTo(db.products, { foreignKey: 'ProductID' });
+db.products.hasMany(db.prouductDetailes, { foreignKey: 'ProductID' });
 
 db.sales.belongsTo(db.products, { foreignKey: 'ProductID' });
-db.products.hasOne(db.sales, { foreignKey: 'ProductID' });
+db.products.hasMany(db.sales, { foreignKey: 'ProductID' });
 
  
 
@@ -69,6 +73,8 @@ db.sales.hasOne(db.ordersDetails, { foreignKey: 'SalesID' });
 
 db.ordersDetails.belongsTo(db.orders, { foreignKey: 'OrderID' });
 db.orders.hasOne(db.ordersDetails, { foreignKey: 'OrderID' });
+// db.orders.belongsTo(db.ordersDetails, { foreignKey: 'OrderDeID' });
+// db.ordersDetails.hasOne(db.orders, { foreignKey: 'OrderDeID' });
 
 db.image.belongsTo(db.products, { foreignKey: 'ProductID' });
 db.products.hasMany(db.image, { foreignKey: 'ProductID' });
