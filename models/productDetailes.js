@@ -17,9 +17,6 @@ module.exports = (sequelize, Sequelize) => {
       }
       },
        
-      Price: {
-        type: Sequelize.DOUBLE
-      },
       Size: {
         type: Sequelize.STRING
       },

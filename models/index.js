@@ -24,10 +24,8 @@ db.carts = require("./carts.js")(sequelize, Sequelize);
 db.categories = require("./categories.js")(sequelize, Sequelize); 
 db.image = require("./image.js")(sequelize, Sequelize); 
 db.orders = require("./orders.js")(sequelize, Sequelize); 
-db.ordersDetails = require("./ordersDetails.js")(sequelize, Sequelize); 
-db.products = require("./products.js")(sequelize, Sequelize); 
-db.sales = require("./sales.js")(sequelize, Sequelize); 
-db.userAddress = require("./userAddress.js")(sequelize, Sequelize); 
+ db.products = require("./products.js")(sequelize, Sequelize); 
+ db.userAddress = require("./userAddress.js")(sequelize, Sequelize); 
 db.users = require("./users.js")(sequelize, Sequelize);
 db.prouductDetailes = require("./productDetailes")(sequelize, Sequelize); 
 
@@ -56,25 +54,22 @@ db.users.hasMany(db.userAddress, { foreignKey: 'UserID' });
  
 db.products.belongsTo(db.categories, { foreignKey: 'CategoryID' });
 db.categories.hasMany(db.products, { foreignKey: 'CategoryID' });
+db.products.belongsTo(db.brands, { foreignKey: 'BrandName' });
+db.brands.hasMany(db.products, { foreignKey: 'BrandName' });
 
-db.ordersDetails.belongsTo(db.prouductDetailes, { foreignKey: 'DetailesID' });
-db.prouductDetailes.hasMany(db.ordersDetails, { foreignKey: 'DetailesID' });
-
+ 
 db.prouductDetailes.belongsTo(db.products, { foreignKey: 'ProductID' });
 db.products.hasMany(db.prouductDetailes, { foreignKey: 'ProductID' });
 
-db.sales.belongsTo(db.products, { foreignKey: 'ProductID' });
-db.products.hasMany(db.sales, { foreignKey: 'ProductID' });
+db.carts.belongsTo(db.products, { foreignKey: 'ProductID' });
+db.products.hasMany(db.carts, { foreignKey: 'ProductID' });
 
  
+db.orders.belongsTo(db.products, { foreignKey: 'ProductID' });
+db.products.hasMany(db.orders, { foreignKey: 'ProductID' });
 
-db.ordersDetails.belongsTo(db.sales, { foreignKey: 'SalesID' });
-db.sales.hasOne(db.ordersDetails, { foreignKey: 'SalesID' });
 
-db.ordersDetails.belongsTo(db.orders, { foreignKey: 'OrderID' });
-db.orders.hasOne(db.ordersDetails, { foreignKey: 'OrderID' });
-// db.orders.belongsTo(db.ordersDetails, { foreignKey: 'OrderDeID' });
-// db.ordersDetails.hasOne(db.orders, { foreignKey: 'OrderDeID' });
+ 
 
 db.image.belongsTo(db.products, { foreignKey: 'ProductID' });
 db.products.hasMany(db.image, { foreignKey: 'ProductID' });

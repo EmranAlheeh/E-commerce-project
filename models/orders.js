@@ -4,7 +4,16 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER,
         primaryKey: true
       },
-      UserID: {
+      ProductID: {
+        type: Sequelize.INTEGER,
+        references: {
+          // This is a reference to another model
+          model: 'products',
+
+          // This is the column name of the referenced model
+          key: 'ProductID'
+      }
+      },UserID: {
         type: Sequelize.INTEGER,
         references: {
           // This is a reference to another model
@@ -12,6 +21,15 @@ module.exports = (sequelize, Sequelize) => {
 
           // This is the column name of the referenced model
           key: 'UserID'
+      }
+      },CartID: {
+        type: Sequelize.INTEGER,
+        references: {
+          // This is a reference to another model
+          model: 'carts',
+
+          // This is the column name of the referenced model
+          key: 'CartID'
       }
       },
       

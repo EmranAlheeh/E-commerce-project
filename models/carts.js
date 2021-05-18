@@ -3,7 +3,17 @@ module.exports = (sequelize, Sequelize) => {
       CartID: {
         type: Sequelize.INTEGER,
         primaryKey: true
-      },UserID: {
+      },ProductID: {
+        type: Sequelize.INTEGER,
+        references: {
+          // This is a reference to another model
+          model: 'products',
+
+          // This is the column name of the referenced model
+          key: 'ProductID'
+      }
+      },
+      UserID: {
         type: Sequelize.INTEGER,
         references: {
           // This is a reference to another model
