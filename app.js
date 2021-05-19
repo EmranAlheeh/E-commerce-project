@@ -7,7 +7,10 @@ var logger = require('morgan');
 var loadenv = require('dotenv').config();
 
 var indexRouter = require('./routes/index');
- 
+var categoryRouter = require('./routes/category')
+var productRouter = require('./routes/product')
+var uploudRouter= require('./routes/uplode')
+var brandRouter= require('./routes/brand')
 var loadenv = require('dotenv').config();
  
 var app = express();
@@ -26,7 +29,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
- 
+app.use('/ca',categoryRouter);
+app.use('/pro',productRouter);
+app.use('/uploud',uploudRouter);
+app.use('/br',brandRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
