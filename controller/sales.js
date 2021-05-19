@@ -58,7 +58,7 @@ const createpro = function(req, res){ //create new product
           });
          
       }
-      const getAllsales = function(req, res){ //find products that have the same discount
+      const SearchforSales = function(req, res){ //find products that have the same discount
       const Discount = req.params.Discount
           Pro.findAll({
             where:{Discount:Discount}
@@ -140,7 +140,7 @@ const createpro = function(req, res){ //create new product
       module.exports = {
                         withoutDISCOUNT:withoutDISCOUNT,                   
                         createSale:createSale,                        
-                        getAllsales:getAllsales,
+                        SearchforSales:SearchforSales,
                         deleteSale:deleteSale,
                         createpro:createpro
                       };  
