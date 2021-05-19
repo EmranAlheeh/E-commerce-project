@@ -87,6 +87,10 @@ const createpro = function(req, res){ //create new product
             Pro.update(req.body,  {
               where: { ProductID: id }  
             })
+			Pro.update({TotalPrice:total},  {
+              
+              where: { ProductID: id }  
+            })
               .then(num => {
                 if (num == 1) {
                   res.send({
