@@ -83,7 +83,7 @@ const createpro = function(req, res){ //create new product
           const createSale = function(req, res){ //create discount! 
        
             const id = req.params.id;
-            const total = (req.query.Price - (req.body.Discount*req.query.Price));
+            const total = (req.body.Price - (req.body.Discount*req.body.Price));
             Pro.update(req.body,  {
               where: { ProductID: id }  
             })
@@ -91,7 +91,7 @@ const createpro = function(req, res){ //create new product
                 if (num == 1) {
                   res.send({
 
-                    
+                    TotalPrice:total,
                     message: "Sale was created successfully."
                   });
                 } else {
