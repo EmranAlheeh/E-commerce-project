@@ -13,6 +13,8 @@ var uploudRouter= require('./routes/uplode')
 var brandRouter= require('./routes/brand')
 var loadenv = require('dotenv').config();
  var salesRouter = require('./routes/sales');
+ var cartsRouter = require('./routes/carts');
+var ordersRouter = require('./routes/orders');
 var app = express();
 // connect to database
 const db = require("./models");
@@ -34,6 +36,13 @@ app.use('/pro',productRouter);
 app.use('/uploud',uploudRouter);
 app.use('/br',brandRouter);
 app.use('/sales', salesRouter);
+app.use('/add', cartsRouter);
+app.use('/delete', cartsRouter);
+app.use('/view', cartsRouter);
+app.use('/place', ordersRouter);
+app.use('/get', ordersRouter);
+app.use('/update', ordersRouter);
+app.use('/delete', ordersRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
